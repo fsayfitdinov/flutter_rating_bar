@@ -230,6 +230,7 @@ class _RatingBarState extends State<RatingBar> {
     return Material(
       color: Colors.transparent,
       child: Wrap(
+        alignment: widget.wrapAlignment,
         textDirection: textDirection,
         direction: widget.direction,
         children: List.generate(
@@ -301,8 +302,7 @@ class _RatingBarState extends State<RatingBar> {
           } else {
             final tappedPosition = details.localPosition.dx;
             final tappedOnFirstHalf = tappedPosition <= widget.itemSize / 2;
-            value = index +
-                (tappedOnFirstHalf && widget.allowHalfRating ? 0.5 : 1.0);
+            value = index + (tappedOnFirstHalf && widget.allowHalfRating ? 0.5 : 1.0);
           }
 
           value = math.max(value, widget.minRating);
@@ -322,8 +322,7 @@ class _RatingBarState extends State<RatingBar> {
             valueListenable: _glow,
             builder: (context, glow, child) {
               if (glow && widget.glow) {
-                final glowColor =
-                    widget.glowColor ?? Theme.of(context).colorScheme.secondary;
+                final glowColor = widget.glowColor ?? Theme.of(context).colorScheme.secondary;
                 return DecoratedBox(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
